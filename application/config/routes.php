@@ -57,3 +57,6 @@ $route['medicament/([0-9]+)'] = 'MedicamentController/searchMedicamentById/$1';
 $route['medicament/([a-zA-Z]+)'] = 'MedicamentController/searchMedicamentByName/$1';
 $route['medicament/'] = 'MedicamentController/addDefinitionAlternative/';
 $route['medicament/'] = 'MedicamentController/voteDefinitionAlternative/';
+
+$route['user/'] = 'UserController/login/';
+$route['user/'] = 'UserController/register/';
