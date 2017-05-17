@@ -19,7 +19,6 @@ class MedicamentController extends MY_Controller {
 	}
 
 	public function searchMedicamentByName($name) {
-
 		$liste = $this->medicament->getMedicamentListByName($name);
 
 		return json_output(200,$liste);
