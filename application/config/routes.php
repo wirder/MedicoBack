@@ -55,3 +55,5 @@ $route['translate_uri_dashes'] = FALSE;
 
 $route['medicament/([0-9]+)'] = 'MedicamentController/searchMedicamentById/$1';
 $route['medicament/([a-zA-Z]+)'] = 'MedicamentController/searchMedicamentByName/$1';
+$route['medicament/'] = 'MedicamentController/addDefinitionAlternative/';
+$route['medicament/'] = 'MedicamentController/voteDefinitionAlternative/';

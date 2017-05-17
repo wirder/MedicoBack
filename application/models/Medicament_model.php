@@ -65,4 +65,17 @@ class Medicament_model extends CI_Model {
 
   }
 
+    public function addDefinitionAlternative($data) {
+        $this->db->insert('definitions_alternatives',$data);
+        return array('status' => 201,'message' => 'Data has been created.');
+    }
+
+    public function voteDefinitionAlternative($datas) {
+        $sql = $this->db->insert_string('votes_definitions_alternatives', $datas) . ' ON DUPLICATE KEY UPDATE vote=VALUES(vote)';
+
+        $this->db->query($sql);
+
+        return array('status' => 201,'message' => 'Data has been updated.');
+    }
+
 }
