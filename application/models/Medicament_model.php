@@ -7,7 +7,7 @@ class Medicament_model extends CI_Model {
 
   public function getCISbyMedicamentId($id) {
 
-    if ( !is_null($id) )
+    if ( isset($id) )
       $this->db->where('id', $id);
 
     $this->db->select('cis');
@@ -24,7 +24,7 @@ class Medicament_model extends CI_Model {
 
   public function getMedicamentListByName($name) {
 
-    if ( !is_null($name) )
+    if ( isset($name) )
       $this->db->like('denomination_medicament', $name);
 
     $this->db->select('*');
@@ -41,7 +41,7 @@ class Medicament_model extends CI_Model {
 
   public function getMedicamentByCIS($cis) {
 
-    if ( !is_null($cis) )
+    if ( isset($cis) )
       $this->db->where('s.cis', $cis);
 
     $this->db->select('s.cis as cis_medicament, s.*, p.*, i.*, g.*, d.*, cond.*, compo.*, smr.*, asmr.*, ct.*');
@@ -76,6 +76,54 @@ class Medicament_model extends CI_Model {
         $this->db->query($sql);
 
         return array('status' => 201,'message' => 'Data has been updated.');
+    }
+
+    public function getSymptomesCategories() {
+
+      $this->db->select('*');
+      $this->db->from('symptomes_categories');
+      $query = $this->db->get();
+
+      if ( $query->num_rows() > 0 ) {
+        return $query->result();
+      }
+
+      return FALSE;
+
+    }
+
+    public function getSymptomesByCategorie($id) {
+
+      if ( isset($id) )
+        $this->db->where('id_categorie', $id);
+
+      $this->db->select('*');
+      $this->db->from('symptomes');
+      $query = $this->db->get();
+
+      if ( $query->num_rows() > 0 ) {
+        return $query->result();
+      }
+
+      return FALSE;
+
+    }
+
+    public function getMedicamentsBySymptome($id) {
+
+      if ( isset($id) )
+        $this->db->where('id_symptome', $id);
+
+      $this->db->select('*');
+      $this->db->from('symptomes_cis');
+      $query = $this->db->get();
+
+      if ( $query->num_rows() > 0 ) {
+        return $query->result();
+      }
+
+      return FALSE;
+
     }
 
 }
