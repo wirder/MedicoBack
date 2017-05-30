@@ -12,16 +12,42 @@ class MedicamentController extends MY_Controller {
 	public function searchMedicamentById($id) {
 
 		$cis = $this->medicament->getCISbyMedicamentId($id);
-		$medicament = $this->medicament->getMedicamentByCIS($cis->cis);
-
-		return json_output(200,$medicament);
+		$this->searchMedicamentByCIS($cis);
 
 	}
 
 	public function searchMedicamentByName($name) {
-		$liste = $this->medicament->getMedicamentListByName($name);
 
-		return json_output(200,$liste);
+		$liste = $this->medicament->getMedicamentListByName($name);
+		return json_output(200, $liste);
+
+	}
+
+	public function searchMedicamentByCIS($cis) {
+
+		$medicament = $this->medicament->getMedicamentByCIS($cis->cis);
+		return json_output(200, $medicament);
+
+	}
+
+	public function searchMedicamentsBySymptome($id) {
+
+		$medicamentListeBySymptome = $this->medicament->getMedicamentsBySymptome($id);
+		return json_output(200, $medicamentListeBySymptome);
+
+	}
+
+	public function searchSymptomeById($id) {
+
+		$symptome = $this->medicament->getSymptomeById($id);
+		return json_output(200, $symptome);
+
+	}
+
+	public function searchMedicamentsByLaboratoireName($name) {
+
+		$medicamentListeByLaboratoireName = $this->medicament->getMedicamentListeByLaboratoireName($name);
+		return json_output(200, $medicamentListeByLaboratoireName);
 
 	}
 
