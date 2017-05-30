@@ -20,6 +20,7 @@ class MedicamentController extends MY_Controller {
 
 		$liste = $this->medicament->getMedicamentListByName($name);
 		return json_output(200, $liste);
+<<<<<<< HEAD
 
 	}
 
@@ -48,6 +49,15 @@ class MedicamentController extends MY_Controller {
 
 		$medicamentListeByLaboratoireName = $this->medicament->getMedicamentListeByLaboratoireName($name);
 		return json_output(200, $medicamentListeByLaboratoireName);
+=======
+
+	}
+
+	public function searchMedicamentByCIS($cis) {
+
+		$medicament = $this->medicament->getMedicamentByCIS($cis->cis);
+		return json_output(200, $medicament);
+>>>>>>> origin/master
 
 	}
 

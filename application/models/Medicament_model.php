@@ -114,6 +114,7 @@ class Medicament_model extends CI_Model {
       if ( isset($id) )
         $this->db->where('id_symptome', $id);
 
+<<<<<<< HEAD
       $this->db->select('symp.cis, s.id, s.denomination_medicament');
       $this->db->from('symptomes_cis symp');
       $this->db->join('specialites s', 'symp.cis = s.cis', 'left');
@@ -153,6 +154,10 @@ class Medicament_model extends CI_Model {
 
       $this->db->select('*');
       $this->db->from($this->table);
+=======
+      $this->db->select('*');
+      $this->db->from('symptomes_cis');
+>>>>>>> origin/master
       $query = $this->db->get();
 
       if ( $query->num_rows() > 0 ) {
